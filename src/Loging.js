@@ -1,50 +1,98 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect} from 'react'
 import Person from './Person';
 
-const Loging = ({ setshow }) => {
-    const [firstname, setfirstname] = useState('');
-    const [lastname, setlastname] = useState('');
-    const [email, setemail] = useState('');
-    const [people, setpeople] = useState([]);
-    const handelSubmit = (e) => {
+function Loging()  {
+    const initialValues = {username:"",email: "", password:""};
+    const[formValues, setformvalues]= useState(initialValues);
+    const[formErrors, setformErrors]= useState({});
+    const [isSumbit, setSubmit] = useState(false);
+    const handleChange = (e) => {
+        
+        const{ name, value } = e.target;
+        setformvalues({...formValues, [name]:value});
+       
+    };
+
+    const handleSubmit = (e) => {
         e.preventDefault();
-        if (firstname && lastname && email) {
-            const person = { firstname, email, lastname }
-            setpeople((people) => {
-                return [...people, person];
-            })
-            setfirstname('');
-            setlastname('');
-            setemail('');
-            setshow(false);
-            // console.log("no fault");
+        setformErrors(validate(formValues));
+        setSubmit(true);
+    };
+    useEffect(()=> {
+        console.log(formErrors)
+        if (Object.keys(formErrors).length === 0 && isSumbit){
+            console.log(formValues);
         }
+        },[formErrors]);
+
+    const validate = (values) =>{
+        const errors = {};
+        const regex = /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/i;
+        if(!values.username) {
+            errors.username = "username is required";
+        }
+        if(!values.email) {
+            errors.email = "email is required";
+        }
+        if(!values.password) {
+            errors.password = "password is required";
+        }
+        else if(values.password.length < 4 ){
+            errors.password = "password should be longer than 4 characters";
+        }
+        else if(values.password.length > 10 ){
+            errors.password = "password should be less than 10 characters";
+        }
+        return errors;
     }
-
-
     return (
-        <>
-            <h1 className='a'>Basic Information Form</h1>
-            <article className>
-                <form className='b'>
-                    <div className='c'>
-                        <label htmlFor="firstName"> Name :</label>
-                        <input type="text" id='firstName' value={firstname} required onChange={(e) => setfirstname(e.target.value)} />
-                    </div>
-                    <div className='c'>
-                        <label htmlFor="lasttName"> Lastname :</label>
-                        <input type="text" id='lasttName' value={lastname} onChange={(e) => setlastname(e.target.value)} />
-                    </div>
-                    <div className='c'>
-                        <label htmlFor="email"> Email :</label>
-                        <input type="email" id='email' value={email} onChange={(e) => setemail(e.target.value)} />
-                    </div>
-                    <button type='submit' onClick={handelSubmit}>Submit</button>
-                </form>
-            </article>
-            <Person people={people} />
-        </>
-    )
+     <div className='container'>
+         {Object.keys(formErrors).length === 0 && isSumbit ? 
+         (<div className='success'>Signed in succesfully</div>) : 
+         (<div>sign in</div>)}
+         <form onSubmit={handleSubmit}>
+             <h1>Login Form</h1>
+             <div className='ui divider'></div>
+             <div className='ui form'>
+                 <div className='field'>
+                     <label>Username</label>
+                     <input 
+                     type="text" 
+                     name="username" 
+                     placeholder='user name' 
+                     value={formValues.username}
+                     onChange={handleChange}
+                     />
+                 </div>
+                 <p>{formErrors.username}</p>
+                 <div className='field'>
+                     <label>Email</label>
+                     <input 
+                     type="email" 
+                     name="email" 
+                     placeholder='email' 
+                     value={formValues.email} 
+                     onChange={handleChange}
+                     />
+                 </div>
+                 <p>{formErrors.email}</p>
+                 <div className='field'>
+                     <label>Password</label>
+                     <input 
+                     type="password" 
+                     name="password" 
+                     placeholder='password' 
+                     value={formValues.password} 
+                     onChange={handleChange}
+                     />
+
+                 </div>
+                 <p>{formErrors.password}</p>
+                 <button className='submitButton'>Submit</button>
+             </div>
+         </form>
+     </div>
+    );
 
 
 }
