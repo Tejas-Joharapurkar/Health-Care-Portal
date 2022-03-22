@@ -24,12 +24,12 @@ const Loging = ({ setshow }) => {
 
     return (
         <>
-            <h1 className='a'>Please Fill The Form</h1>
+            <h1 className='a'>Basic Information Form</h1>
             <article className>
                 <form className='b'>
                     <div className='c'>
                         <label htmlFor="firstName"> Name :</label>
-                        <input type="text" id='firstName' value={firstname} onChange={(e) => setfirstname(e.target.value)} />
+                        <input type="text" id='firstName' value={firstname} required onChange={(e) => setfirstname(e.target.value)} />
                     </div>
                     <div className='c'>
                         <label htmlFor="lasttName"> Lastname :</label>
@@ -37,7 +37,7 @@ const Loging = ({ setshow }) => {
                     </div>
                     <div className='c'>
                         <label htmlFor="email"> Email :</label>
-                        <input type="text" id='email' value={email} onChange={(e) => setemail(e.target.value)} />
+                        <input type="email" id='email' value={email} onChange={(e) => setemail(e.target.value)} />
                     </div>
                     <button type='submit' onClick={handelSubmit}>Submit</button>
                 </form>
