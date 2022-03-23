@@ -1,8 +1,8 @@
 import React, { useState, useEffect} from 'react'
-import Person from './Person';
+import './css/logging.css';
 
 function Loging()  {
-    const initialValues = {username:"",email: "", password:""};
+    const initialValues = {patient_name:"",email: "", symptoms:"",date:"", time:"",password:""};
     const[formValues, setformvalues]= useState(initialValues);
     const[formErrors, setformErrors]= useState({});
     const [isSumbit, setSubmit] = useState(false);
@@ -19,7 +19,7 @@ function Loging()  {
         setSubmit(true);
     };
     useEffect(()=> {
-        console.log(formErrors)
+        // console.log(formErrors)
         if (Object.keys(formErrors).length === 0 && isSumbit){
             console.log(formValues);
         }
@@ -28,11 +28,17 @@ function Loging()  {
     const validate = (values) =>{
         const errors = {};
         const regex = /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/i;
-        if(!values.username) {
-            errors.username = "username is required";
+        if(!values.patient_name) {
+            errors.patient_name = "patient name is required";
         }
         if(!values.email) {
             errors.email = "email is required";
+        }
+        if(!values.date) {
+            errors.date = "date is required";
+        }
+        if(!values.time) {
+            errors.time = "time is required";
         }
         if(!values.password) {
             errors.password = "password is required";
@@ -49,22 +55,23 @@ function Loging()  {
      <div className='container'>
          {Object.keys(formErrors).length === 0 && isSumbit ? 
          (<div className='success'>Signed in succesfully</div>) : 
-         (<div>sign in</div>)}
+         (<div className='initial'>Please fill in your details</div>)}
          <form onSubmit={handleSubmit}>
              <h1>Login Form</h1>
              <div className='ui divider'></div>
              <div className='ui form'>
                  <div className='field'>
-                     <label>Username</label>
+                     <label>Patient name</label>
                      <input 
                      type="text" 
-                     name="username" 
-                     placeholder='user name' 
-                     value={formValues.username}
+                     name="patient_name" 
+                     placeholder='Enter the name of the patient' 
+                     value={formValues.patient_name}
                      onChange={handleChange}
                      />
                  </div>
-                 <p>{formErrors.username}</p>
+                 <div className='formError'><p>{formErrors.patient_name}</p></div>
+                 
                  <div className='field'>
                      <label>Email</label>
                      <input 
@@ -75,7 +82,35 @@ function Loging()  {
                      onChange={handleChange}
                      />
                  </div>
-                 <p>{formErrors.email}</p>
+                 <div className='formError'><p>{formErrors.email}</p></div>
+                 
+                 <div className='field'>
+                     <label>Date of appointment</label>
+                     <input 
+                     type="date" 
+                     name="date" 
+                     placeholder='Enter date of appointment' 
+                     value={formValues.date} 
+                     onChange={handleChange}
+                     />
+
+                 </div>
+                 <div className='formError'><p>{formErrors.date}</p></div>
+                
+                
+                 <div className='field'>
+                     <label>Time of appointment</label>
+                     <input 
+                     type="time" 
+                     name="time" 
+                     placeholder='Enter time of appointment' 
+                     value={formValues.time} 
+                     onChange={handleChange}
+                     />
+
+                 </div>
+                 <div className='formError'><p>{formErrors.time}</p></div>
+                
                  <div className='field'>
                      <label>Password</label>
                      <input 
@@ -87,7 +122,10 @@ function Loging()  {
                      />
 
                  </div>
-                 <p>{formErrors.password}</p>
+                 <div className='formError'><p>{formErrors.password}</p></div>
+                 
+                 
+                 
                  <button className='submitButton'>Submit</button>
              </div>
          </form>

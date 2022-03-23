@@ -1,0 +1,104 @@
+html, body {
+    align-items: center;
+    background: #f2f4f8;
+    border: 0;
+    display: flex;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    height: 100%;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+  }
+
+.heading{
+  font-size: 100%;
+}
+  input {
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+    background-color: #eee;
+    border-radius: 25px;
+    padding: 12px;
+    width: fit-content;
+    padding-left: 100px;
+    padding-right: 100px;
+    
+}
+
+.container{
+    --background: white;
+  --border: rgba(0, 0, 0, 0.125);
+  --borderDark: rgba(0, 0, 0, 0.25);
+  --borderDarker: rgba(0, 0, 0, 0.5);
+  --bgColorH: 0;
+  --bgColorS: 0%;
+  --bgColorL: 98%;
+  --fgColorH: 210;
+  --fgColorS: 50%;
+  --fgColorL: 38%;
+  --shadeDark: 0.3;
+  --shadeLight: 0.7;
+  --shadeNormal: 0.5;
+  --borderRadius: 0.125rem;
+  --highlight: #306090;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--borderRadius);
+  box-shadow: 0 1rem 1rem -0.75rem var(--border);
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  position: relative;
+  text-align: center;
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    
+  }
+
+  .success{
+      color: green;
+  }
+
+  .initial{
+    color: black;
+}
+
+.formError{
+    color: red;
+    text-size-adjust: 12px;
+}
+
+::placeholder {
+    text-align: center;
+  }
+
+  button{
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+    background-color: black;
+    border-radius: 25px;
+    padding: 12px;
+    width: max-content;
+    color: #eee;
+    padding-left: 100px;
+    padding-right: 100px;
+    margin-top: 30px;
+  }
+
+  .button:hover {background-color: grey}
+
+.button:active {
+  background-color: green;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
