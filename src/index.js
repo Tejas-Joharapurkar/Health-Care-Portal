@@ -6,7 +6,10 @@ import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <h1>Welcome to our HealthCare Portal</h1>
+    
+ 
+    <div className='header'><h1>Welcome to our HealthCare Portal</h1></div>
+    
     <App />
   </React.StrictMode>,
   document.getElementById('root')

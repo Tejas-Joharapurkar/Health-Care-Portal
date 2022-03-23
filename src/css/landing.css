@@ -1,0 +1,67 @@
+.container{
+    --background: white;
+  --border: rgba(0, 0, 0, 0.125);
+  --borderDark: rgba(0, 0, 0, 0.25);
+  --borderDarker: rgba(0, 0, 0, 0.5);
+  --bgColorH: 0;
+  --bgColorS: 0%;
+  --bgColorL: 98%;
+  --fgColorH: 210;
+  --fgColorS: 50%;
+  --fgColorL: 38%;
+  --shadeDark: 0.3;
+  --shadeLight: 0.7;
+  --shadeNormal: 0.5;
+  --borderRadius: 0.125rem;
+  --highlight: #306090;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--borderRadius);
+  box-shadow: 0 1rem 1rem -0.75rem var(--border);
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  position: relative;
+  text-align: center;
+  align-items: center;
+  width: fit-content;
+  margin: auto;
+}
+
+.doctors{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  align-items: center;
+}
+
+img{
+  height: 200px;
+  width: 200px;
+}
+
+button{
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: hidden;
+  background-color: black;
+  border-radius: 25px;
+  padding: 12px;
+  width: max-content;
+  color: #eee;
+  padding-left: 100px;
+  padding-right: 100px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+button:hover {
+  background-color:grey;
+  color: black;
+
+}
+
+button:active {
+  background-color: green;
+}

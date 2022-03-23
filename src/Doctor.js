@@ -13,6 +13,7 @@ const Doctors = () => {
                             <h4>Name: {total.name}</h4>
                             <h4>Speciality: {total.speciality}</h4>
                             <p>Info: {total.info}</p>
+                            <button>see more</button>
                         </span>
 
                     </div>

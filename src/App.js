@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import Loging from './Loging'
+// import Loging from './Loging'
+import Landingpage from './Landingpage'
 // import Doctors from './Doctor'
 
 
@@ -9,8 +10,10 @@ const App = () => {
     <main>
 
       <section>
-
-        <Loging></Loging>
+      
+        <Landingpage></Landingpage>
+  
+      
       </section>
 
     </main>
